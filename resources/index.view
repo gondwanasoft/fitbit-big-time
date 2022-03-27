@@ -1,16 +1,13 @@
 <svg>
   <image id="image" width='100%' height='100%' />
 
-  <!--<rect width='100%' height='100%' fill='#202020' />--> <!-- TODO 8 del -->
   <text id="dateSec" x="50%-35" y="67" text-length='4' font-family="Barlow-Bold" font-size='65' fill="#40e0e0"/>
-  <!--<text id="sec" x="100%-140" y="80" text-length='4' font-family="Barlow-Bold" font-size='65' fill="40e0e0"/>-->
 
   <svg id='div-upper' y='90' >
     <rect x='5' y='0' width='100%-10' height='4' fill='#808080' />
     <rect x='5' y='$+4' width='100%-10' height='4' fill='#808080' />
   </svg>
 
-  <!--<text id="time" x="50%-2" y="50%+45" text-length='8' font-family="Barlow-Bold" font-size='130' text-anchor='middle' fill="white"/>-->
   <svg id='time' y="50%+44">
     <text id="hour" y="0" font-family="Barlow-Bold" font-size='125' fill="white"/>
     <text id="colon" x="160" y="-10" font-family="Barlow-Bold" font-size='125' fill="#40e0e0">:</text>

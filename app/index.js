@@ -33,7 +33,7 @@ let heartStaleTimer
 let state = {
   sec:        true,         // false=date
   activity:   0,            // ACTIVITY_TYPE currently displayed
-  col:        '#40e0e0',       // non-white text colour
+  col:        '#40e0e0',    // non-white text colour
   background: undefined     // filename of background image
 }
 
@@ -55,11 +55,11 @@ let state = {
   heartSensor = new HeartRateSensor({ frequency: 1 })
   heartSensor.addEventListener("reading", onHeartReading)
 
-  if (preferences.clockDisplay === '12h') {   // use larger font
+  if (preferences.clockDisplay === '12h') {   // use larger font and rearrange elements to suit
     hourEl.style.fontSize = colonEl.style.fontSize = minEl.style.fontSize = 135
-    document.getElementById('time').y = 216       // TODO 5 adapt to SDK4
-    document.getElementById('div-upper').y = 88   // TODO 5 adapt to SDK4
-    document.getElementById('div-lower').y = 236  // TODO 5 adapt to SDK4
+    document.getElementById('time').y = 216
+    document.getElementById('div-upper').y = 88
+    document.getElementById('div-lower').y = 236
   }
 
   colonWidth = colonEl.getBBox().width
@@ -125,7 +125,6 @@ function onTick(now) {
   const hour = now.getHours()
   const min = now.getMinutes()
 
-  //hour = 12   // TODO 8 SS: 21 or 12
   let timeChanged
 
   if (hour !== hourPrev) {
@@ -144,7 +143,6 @@ function onTick(now) {
     }
   }
 
-  //min = 38  // TODO 8 SS
   if (min !== minPrev) {
     minPrev = min
     minEl.text = zeroPad(min)
@@ -154,7 +152,7 @@ function onTick(now) {
 
   // Set time element x positions:
   if (timeChanged) {
-    const hourX = (SCREEN_SIZE - hourWidth - colonWidth - minWidth) / 2   // TODO 9 subtract something to centre if shadowed
+    const hourX = (SCREEN_SIZE - hourWidth - colonWidth - minWidth) / 2
     hourEl.x = hourX
     colonEl.x = hourX + hourWidth
     minEl.x = colonEl.x + colonWidth
@@ -162,7 +160,6 @@ function onTick(now) {
 
   if (!display.aodActive) {
     const sec = now.getSeconds()
-    //sec = 55  // TODO 8 SS
     if (state.sec) dateSecEl.text = zeroPad(sec)
     colonEl.style.display = sec%2? 'none' : 'inline'  // blink colon if not in AOD
 
@@ -172,7 +169,6 @@ function onTick(now) {
       case ACTIVITY_TYPE.DIST: actEl.text = (today.adjusted.distance * DIST_MULTIPLIER).toFixed(2); break
       case ACTIVITY_TYPE.AZM: actEl.text = today.adjusted.activeZoneMinutes.total; break
     }
-    //actEl.text = '1,329' // TODO 8 SS
   }
 }
 
@@ -190,7 +186,7 @@ function zeroPad(s) {
 
 function onHeartReading() {
   if (heartStaleTimer !== undefined) clearTimeout(heartStaleTimer)
-  heartStaleTimer = setTimeout(onHeartStale, 20000)  // TODO 8 20000
+  heartStaleTimer = setTimeout(onHeartStale, 20000)
   actEl.text = heartSensor.heartRate
 }
 
@@ -321,5 +317,3 @@ function restoreState() {
 }
 
 //#endregion
-
-// TODO 9 pro version: background image optional vignette and lighten/darken (cf. Eat Me); dark text theme; shadowed text; arbitrary colour sliders; selectable activity types

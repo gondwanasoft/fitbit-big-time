@@ -19,13 +19,14 @@ function setDefaultSetting(key, value) {
   let extantValue = settingsStorage.getItem(key)
   if (extantValue === null) {
     if (typeof(value) === 'object') value = JSON.stringify(value)
-    //console.log(`setDefaultSetting(): setting ${key} to ${value}`)
     settingsStorage.setItem(key, value)
   }
 }
 
 function getAndSendAllSettings() {
   let settings = {}
+
+  addSetting(settings, 'col')
 
   if (Object.keys(settings).length) sendSettings(settings)
 }
@@ -41,13 +42,12 @@ function onSettingsChange(evt) {
 
 function addSetting(settings, key) {
   // Returns true if any settings were added.
-  //console.log(`addSetting(): key=${key} initialised=${settingsStorage.getItem('initialised')} ready=${settingsStorage.getItem('ready')}`)
 
   let item = settingsStorage.getItem(key)
   if (item === undefined || item === null) return
-  //console.log(`addSetting(): ${key}=${item} (${typeof item})`)
+
   let value
-  switch(key) {
+  switch(key) {   // this makes more sense when there are more settings :)
     case 'col':
       value = item.substring(1,8)
       break
@@ -58,7 +58,6 @@ function addSetting(settings, key) {
 }
 
 function sendSettings(settings) {
-  //console.log(`sendSettings: ${JSON.stringify(settings)} [${Object.keys(settings).length}]`);
   if (settings !== undefined) {
     outbox.enqueue(Date.now()+'.cbor', encode(settings))
   }

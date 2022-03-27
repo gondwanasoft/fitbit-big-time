@@ -12,11 +12,6 @@
     "appDisplayName": "BIG TIME",
     "iconFile": "resources/icon.png",
     "wipeColor": "#ffffff",
-    "xrequestedPermissions": [
-      "access_activity",
-      "access_heart_rate",
-      "access_user_profile"
-    ],
     "requestedPermissions": [
       "access_activity",
       "access_heart_rate",
