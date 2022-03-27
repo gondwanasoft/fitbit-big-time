@@ -3,6 +3,8 @@ A simple clockface that demonstrates settings (including `ImagePicker`), file tr
 
 ![Image](screenshot.png "Screenshot")
 
+This repository only contains code for the SDK5 (Versa 3 and Sense) build.
+
 You can install this clockface from the [Fitbit gallery](https://gallery.fitbit.com/details/f0bdea7c-6efd-4387-a360-480aaa632d75).
 
 appUUID
