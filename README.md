@@ -1,6 +1,8 @@
 # fitbit-big-time
 A simple clockface that demonstrates settings (including `ImagePicker`), file transfer and AOD.
 
+![Image](screenshot.png "Screenshot")
+
 You can install this clockface from the [Fitbit gallery](https://gallery.fitbit.com/details/f0bdea7c-6efd-4387-a360-480aaa632d75).
 
 appUUID
